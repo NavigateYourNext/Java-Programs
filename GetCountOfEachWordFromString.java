@@ -13,6 +13,8 @@ public class GetCountOfEachWordFromString
 		System.out.println("Enter A String : ");
 		String s = br.readLine();
 		
+		s = s.toLowerCase();
+		
 		String[] splitString = s.split(" ");
 		
 		HashMap<String,Integer> hm = new HashMap<String,Integer> ();
