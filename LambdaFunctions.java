@@ -3,6 +3,7 @@ package JavaPrograms;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ForkJoinPool;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
@@ -103,23 +104,52 @@ public class LambdaFunctions {
 		List<Customer> theCustomers = Arrays.asList(new Customer("Akshay",24),new Customer("Shete",30));
 		Customer theCustomers1 = theCustomers.stream().filter(x -> x.getName().equals("Akshay")).findAny().orElse(null); //findAny() used to find the required condition
 		System.out.println(theCustomers1.getName()+" "+theCustomers1.getAge());
-		System.out.println("-----------");
-		
+
 		//Stream Examples - 3 
 		List<Customer> theCustomers2 = Arrays.asList(new Customer("Akshay",24),new Customer("Shete",30));
 		String theCustomers3 = theCustomers2.stream().filter(x -> x.getName().equals("Akshay")).map(Customer::getName).findAny().orElse(null); //map() used to mapped it to required method
 		System.out.println(theCustomers3);
 		System.out.println("-----------");
-		
+
 		//iterate(seed,UnaryOperator) -> seed means from where to start
 		List<Integer> lst1 = IntStream.iterate(0,x -> x+2).mapToObj(Integer::valueOf).limit(10).collect(Collectors.toList());
 		lst1.forEach(System.out::println);
 		System.out.println("-----------");
-		
+
 		//generate() used to generate Random Numbers
 		List<Integer> lst2 = Stream.generate(() -> (new Random()).nextInt(100)).limit(10).collect(Collectors.toList());
 		lst2.forEach(x -> System.out.println(x));
 		System.out.println("-----------");
+
+		//FlatMap() -> We cannt used stream() directly on Stream<String[]>,Set<String[]>,List<String[]> so we have to used flatmap to covert String[] to String
+		String[][] data = new String[][] {
+			{"a","b"},
+			{"c","d"}
+		};
+		
+		Stream<String[]> dataStream = Arrays.stream(data);
+		Stream<String> streamFlatMap = dataStream.flatMap(x -> Arrays.stream(x));
+		Stream<String> dataFilter = streamFlatMap.filter(x -> x.toString().equals("a"));
+		dataFilter.forEach(System.out::println);
+		System.out.println("-----------");
+		
+		int[] dataa = {1,2,3,4,5,6,7,8,9,10};
+		Stream<int[]> streamArray = Stream.of(dataa);
+		IntStream inst = streamArray.flatMapToInt(x -> Arrays.stream(x)).filter(x -> x>5);
+		inst.forEach(System.out::println);
+		System.out.println("-----------");
+		
+		//IntStream - Range
+		IntStream.range(1, 5).forEach(System.out::println); // Range(from,to-1)
+		System.out.println("-----------");
+		
+		//Get Total Core In System
+		ForkJoinPool pool = ForkJoinPool.commonPool();
+		System.out.println("Total Cores Are: "+pool.getParallelism());
+		System.out.println("-----------");
+		
+		
+		
 	}
 
 }
