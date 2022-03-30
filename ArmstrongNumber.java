@@ -3,7 +3,7 @@ package JavaPrograms;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-//Armstrong Number
+//Armstrong Number - 1
 public class ArmstrongNumber {
 
 	public static void main(String[] args)throws Exception {
