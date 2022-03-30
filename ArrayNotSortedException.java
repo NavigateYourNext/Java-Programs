@@ -1,6 +1,6 @@
 package JavaPrograms;
 
-//Custom Exception
+//Custom Exception Declared
 public class ArrayNotSortedException extends Exception
 {
 	public String toString()
