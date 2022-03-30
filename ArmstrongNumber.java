@@ -3,7 +3,7 @@ package JavaPrograms;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-//Armstrong Numberr
+//Armstrong Numberr Code
 public class ArmstrongNumber {
 
 	public static void main(String[] args)throws Exception {
