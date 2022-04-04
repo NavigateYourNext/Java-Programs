@@ -3,7 +3,6 @@ package JavaPrograms;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-//Armstrong Numberr Code
 public class ArmstrongNumber {
 
 	public static void main(String[] args)throws Exception {
@@ -30,11 +29,12 @@ public class ArmstrongNumber {
 		int sum = 0;
 
 		temp = no;
+		int numberLength = String.valueOf(temp).length();
 
 		while(no != 0)
 		{
 			rem = no%10;
-			sum = sum+(rem*rem*rem);
+			sum = sum+(int)Math.pow(rem, numberLength);
 			no=no/10;
 		}
 
