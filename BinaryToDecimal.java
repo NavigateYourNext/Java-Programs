@@ -1,12 +1,13 @@
 package JavaPrograms;
 
+import java.util.LinkedList;
+
 public class BinaryToDecimal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		System.out.println(convertToDecimal(1011));
-
 	}
 	
 	public static long convertToDecimal(long number)
